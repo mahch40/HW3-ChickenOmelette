@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
   waveName: Wave AsteroidField
   waveType: 1
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 6430548262536200339, guid: 638f5a7f2b5f79515bac90739f4b9350, type: 3}
   count: 12
   enemyHealth: 3
   moveSpeed: 5

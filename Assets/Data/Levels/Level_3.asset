@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9bd121f1ecc9c36a6e3416b39a256e, type: 3}
+  m_Name: Level_3
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.LevelDataSO
+  levelNumber: 3
+  sceneName: Level3
+  nextLevel: {fileID: 0}
+  themeName: Deep Galaxy
+  backgroundColor: {r: 0.05490196, g: 0.023529412, b: 0.1254902, a: 1}
+  backgroundPrefab: {fileID: 0}
+  music: {fileID: 0}
+  completionMessage: The Chicken Emperor has fallen!
+  rounds: []

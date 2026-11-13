@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d39bd0c20eebd83088c41e68fee61f2, type: 3}
   m_Name: Wave_AsteroidField
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
-  waveName: New Wave
-  waveType: 0
+  waveName: Wave AsteroidField
+  waveType: 1
   enemyPrefab: {fileID: 0}
-  count: 15
-  enemyHealth: 0
-  moveSpeed: 4
-  spawnInterval: 0.25
+  count: 12
+  enemyHealth: 3
+  moveSpeed: 5
+  spawnInterval: 0.5
   entryWaypoints:
   - {x: 0.5, y: 1.2}
   - {x: 0.15, y: 0.9}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d39bd0c20eebd83088c41e68fee61f2, type: 3}
   m_Name: Wave_GridBasic
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
-  waveName: New Wave
+  waveName: Wave GridBasic
   waveType: 0
   enemyPrefab: {fileID: 0}
   count: 15

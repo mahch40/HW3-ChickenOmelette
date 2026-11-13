@@ -22,12 +22,17 @@ MonoBehaviour:
   completionMessage: Sector cleared! Heading to the asteroid belt...
   rounds:
   - wave: {fileID: 11400000, guid: 2ead70c7a876617cea6ecb2e9d1c9e2b, type: 2}
-    countMultiplier: 1
+    countMultiplier: 0.6
     healthMultiplier: 1
     speedMultiplier: 1
     fireRateMultiplier: 1
   - wave: {fileID: 11400000, guid: 72b9b4b0d12b827d1a5675cfcf1cc93e, type: 2}
-    countMultiplier: 0
-    healthMultiplier: 2
-    speedMultiplier: 1.5
-    fireRateMultiplier: 0
+    countMultiplier: 0.5
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 405a95ccc8449c5b4adf49bfe41551ae, type: 2}
+    countMultiplier: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1

@@ -12,6 +12,7 @@ namespace ChickenOmelette.Core
 
         public bool IsSpawning { get; private set; }
         public FormationController Formation => formation;
+        private Coroutine routine;
 
         public event Action AllSpawned;
         public event Action<RoundConfig> WaveStarted;
@@ -30,8 +31,20 @@ namespace ChickenOmelette.Core
                 return;
             }
 
-            StartCoroutine(SpawnRoutine(round));
+            StopSpawning();
+            routine = StartCoroutine(SpawnRoutine(round));
             WaveStarted?.Invoke(round);
+        }
+
+        public void StopSpawning()
+        {
+            if (routine != null)
+            {
+                StopCoroutine(routine);
+                routine = null;
+            }
+
+            IsSpawning = false;
         }
 
         private IEnumerator SpawnRoutine(RoundConfig round)
@@ -68,6 +81,7 @@ namespace ChickenOmelette.Core
             }
 
             IsSpawning = false;
+            routine = null;
             AllSpawned?.Invoke();
         }
 

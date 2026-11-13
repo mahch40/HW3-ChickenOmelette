@@ -14,6 +14,7 @@ namespace ChickenOmelette.Core
         public FormationController Formation => formation;
 
         public event Action AllSpawned;
+        public event Action<RoundConfig> WaveStarted;
 
         public void StartWave(RoundConfig round)
         {
@@ -30,6 +31,7 @@ namespace ChickenOmelette.Core
             }
 
             StartCoroutine(SpawnRoutine(round));
+            WaveStarted?.Invoke(round);
         }
 
         private IEnumerator SpawnRoutine(RoundConfig round)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WeaponDataSO
   weaponName: Plasma Blaster
   sprite: {fileID: -2346302928887187388, guid: 8e16c618b605ee0afb2fe8b04433de82, type: 3}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 2233828434548590068, guid: 6276b2906202cd2df95dc17dce8299dc, type: 3}
   damage: 1
   bulletSpeed: 14
   fireRate: 6

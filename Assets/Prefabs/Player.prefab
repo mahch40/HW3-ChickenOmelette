@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4814934217835229465}
   - component: {fileID: 3718785450320022192}
   - component: {fileID: 2524173307821792728}
+  - component: {fileID: 5038789199970829675}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -233,3 +234,20 @@ MonoBehaviour:
   muzzleOffset: {x: 0, y: 0.6}
   prewarmCount: 30
   logFireRate: 1
+--- !u!114 &5038789199970829675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829936140728332202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8265ef8345cf615906e353d7d0ee29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.MissileLauncher
+  missilePrefab: {fileID: 3833069801641490649, guid: 07a63acbd612de6f5b11e80a30b4acb8, type: 3}
+  startMissiles: 2
+  bossDamageFraction: 0.18
+  cooldownSeconds: 0.5
+  muzzleOffset: {x: 0, y: 0.6}

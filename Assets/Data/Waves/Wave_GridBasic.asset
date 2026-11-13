@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
   waveName: Wave GridBasic
   waveType: 0
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 6001228005374400339, guid: a52d29e6d82559f879ca2f738b7acdd5, type: 3}
   count: 15
   enemyHealth: 0
-  moveSpeed: 4
+  moveSpeed: 5
   spawnInterval: 0.25
   entryWaypoints:
   - {x: 0.5, y: 1.2}

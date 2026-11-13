@@ -49,5 +49,12 @@ namespace ChickenOmelette.Core
             return position.x < r.xMin - margin || position.x > r.xMax + margin
                 || position.y < r.yMin - margin || position.y > r.yMax + margin;
         }
+        public static Vector2 FromViewport(Vector2 viewport)
+        {
+            Rect r = Rect;
+            return new Vector2(
+                Mathf.LerpUnclamped(r.xMin, r.xMax, viewport.x),
+                Mathf.LerpUnclamped(r.yMin, r.yMax, viewport.y));
+        }
     }
 }

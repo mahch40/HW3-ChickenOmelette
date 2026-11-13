@@ -6,8 +6,9 @@ namespace ChickenOmelette.Core
     {
         public const int MinLevel = 1;
 
-        [SerializeField, Range(1, 5)] private int maxLevel = 3;
         [SerializeField, Range(1, 5)] private int startLevel = 1;
+
+        private int maxLevel = 3;
 
         public int Level { get; private set; }
         public int MaxLevel => maxLevel;
@@ -32,11 +33,22 @@ namespace ChickenOmelette.Core
             GameEvents.RaisePowerLevelChanged(Level);
         }
 
+        public void SetMaxLevel(int max)
+        {
+            maxLevel = Mathf.Max(MinLevel, max);
+            if (Level > maxLevel)
+            {
+                SetLevel(maxLevel);
+            }
+        }
+
+        [ContextMenu("Increase Power")]
         public void Increase()
         {
             SetLevel(Level + 1);
         }
 
+        [ContextMenu("Decrease Power")]
         public void Decrease()
         {
             SetLevel(Level - 1);

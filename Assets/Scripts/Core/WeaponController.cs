@@ -34,6 +34,7 @@ namespace ChickenOmelette.Core
             }
 
             bulletPrefab = weapon.BulletPrefab.GetComponent<Bullet>();
+            power.SetMaxLevel(weapon.MaxPowerLevel);
         }
 
         private void Start()

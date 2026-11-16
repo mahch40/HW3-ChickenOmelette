@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d39bd0c20eebd83088c41e68fee61f2, type: 3}
+  m_Name: Wave_L3_Line
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
+  waveName: L3 Line
+  waveType: 0
+  enemyPrefab: {fileID: 6001228005374400339, guid: d208e515f10e9668084328ec43f1730f, type: 3}
+  count: 9
+  enemyHealth: 0
+  moveSpeed: 6.5
+  spawnInterval: 0.18
+  entryWaypoints:
+  - {x: 0.5, y: 1.2}
+  - {x: 0.15, y: 0.9}
+  - {x: 0.85, y: 0.75}
+  formation: 3
+  columns: 5
+  spacing: {x: 1.7, y: 1.4}
+  formationCenter: {x: 0.5, y: 0.8}
+  swayAmplitude: 1.5
+  swaySpeed: 1
+  eggsPerSecond: 1.8
+  eggFallSpeed: 6.5
+  diveInterval: 5
+  diveSpeed: 10

@@ -43,6 +43,11 @@ namespace ChickenOmelette.Core
 
         private void Start()
         {
+            if (level != null && GameManager.Instance != null)
+            {
+                GameManager.Instance.RegisterLevel(level);
+            }
+
             if (autoStart && level != null)
             {
                 StartLevel(level);

@@ -234,6 +234,7 @@ Transform:
   - {fileID: 397860506}
   - {fileID: 1865143991}
   - {fileID: 1612223260}
+  - {fileID: 1454533013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &506926522
@@ -296,6 +297,11 @@ PrefabInstance:
 --- !u!4 &506926523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3092014624155085267, guid: aefc8564180371cb6ab280176fd90266, type: 3}
+  m_PrefabInstance: {fileID: 506926522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &506926524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2829936140728332202, guid: aefc8564180371cb6ab280176fd90266, type: 3}
   m_PrefabInstance: {fileID: 506926522}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
@@ -859,6 +865,52 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1454533012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454533013}
+  - component: {fileID: 1454533014}
+  m_Layer: 0
+  m_Name: RunStateApplier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454533013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454533012}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 428734542}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1454533014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454533012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f262ad1f1a5ef8396b4c6986d7dfa45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.RunStateApplier
+  scoreManager: {fileID: 428734540}
+  player: {fileID: 506926524}
 --- !u!1 &1612223259
 GameObject:
   m_ObjectHideFlags: 0

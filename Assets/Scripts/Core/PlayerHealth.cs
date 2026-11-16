@@ -91,6 +91,12 @@ namespace ChickenOmelette.Core
             invincibility = StartCoroutine(InvincibilityRoutine());
         }
 
+        public void SetLives(int value)
+        {
+            lives = Mathf.Clamp(value, 1, maxLives);
+            GameEvents.RaiseLivesChanged(lives, maxLives);
+        }
+
         private IEnumerator InvincibilityRoutine()
         {
             IsInvincible = true;

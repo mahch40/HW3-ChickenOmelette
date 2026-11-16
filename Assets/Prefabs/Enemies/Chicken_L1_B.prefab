@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4258163887822158760}
   - component: {fileID: 6791511958533513906}
   m_Layer: 0
-  m_Name: "Chicken_L1_\u200C\u200CB"
+  m_Name: Chicken_L1_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

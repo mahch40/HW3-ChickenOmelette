@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ChickenOmelette.Core
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Asteroid : Hazard, IDamageable, IPoolable
+    public class Asteroid : Hazard, IDamageable, IBombable, IPoolable
     {
         [SerializeField, Min(1)] private int maxHealth = 3;
         [SerializeField, Min(0)] private int scoreValue = 5;
@@ -76,6 +76,10 @@ namespace ChickenOmelette.Core
         {
             Release(false);
         }
+        public void OnBombed(float bossDamageFraction)
+        {
+            Release(true);
+        }
 
         public void OnSpawn()
         {
@@ -121,7 +125,7 @@ namespace ChickenOmelette.Core
 
             if (destroyed)
             {
-                GameEvents.RaiseEnemyKilled(transform.position, scoreValue);
+                GameEvents.RaisePointsAwarded(scoreValue);
             }
 
             Action<Asteroid> callback = onRemoved;

@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d39bd0c20eebd83088c41e68fee61f2, type: 3}
-  m_Name: Wave_L1_VShape
+  m_Name: Wave_L1_GridWide
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
-  waveName: L1 V Shape
+  waveName: L1 Circle
   waveType: 0
-  enemyPrefab: {fileID: 6001228005374400339, guid: 109404c12cc1cfafabd2496d6d363e59, type: 3}
-  count: 11
+  enemyPrefab: {fileID: 6001228005374400339, guid: a52d29e6d82559f879ca2f738b7acdd5, type: 3}
+  count: 12
   enemyHealth: 0
-  moveSpeed: 5.5
-  spawnInterval: 0.25
+  moveSpeed: 5
+  spawnInterval: 0.3
   entryWaypoints:
   - {x: 0.5, y: 1.2}
   - {x: 0.15, y: 0.9}
   - {x: 0.85, y: 0.75}
   formation: 0
-  columns: 4
+  columns: 6
   spacing: {x: 1.7, y: 1.4}
   formationCenter: {x: 0.5, y: 0.72}
   swayAmplitude: 1.5
   swaySpeed: 1
-  eggsPerSecond: 1.2
-  eggFallSpeed: 5.5
-  diveInterval: 8
-  diveSpeed: 8
+  eggsPerSecond: 1
+  eggFallSpeed: 5
+  diveInterval: 0
+  diveSpeed: 9

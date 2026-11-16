@@ -9,13 +9,15 @@ namespace ChickenOmelette.Core
         private void OnEnable()
         {
             GameEvents.EnemyKilled += OnEnemyKilled;
+            GameEvents.PointsAwarded += Add;
         }
 
         private void OnDisable()
         {
             GameEvents.EnemyKilled -= OnEnemyKilled;
+            GameEvents.PointsAwarded -= Add;
         }
-
+        
         private void Start()
         {
             GameEvents.RaiseScoreChanged(Score);

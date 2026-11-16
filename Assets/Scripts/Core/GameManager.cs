@@ -1,3 +1,4 @@
+using System.Collections;
 using ChickenOmelette.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,11 +18,19 @@ namespace ChickenOmelette.Core
         [SerializeField] private LevelDataSO currentLevel;
 
         private GameConfigSO config;
+        private ScreenFader fader;
+        private bool transitioning;
+        private bool flowBusy;
 
         public GameConfigSO Config => config;
         public LevelDataSO CurrentLevel => currentLevel;
         public RunState Live => live;
         public RunState Checkpoint => checkpoint;
+
+        private float LevelEndDelay => config != null ? config.LevelEndDelay : 3.5f;
+        private float GameOverDelay => config != null ? config.GameOverDelay : 2.5f;
+        private float FadeSeconds => config != null ? config.FadeSeconds : 0.4f;
+        private string MainMenuScene => config != null ? config.MainMenuScene : "MainMenu";
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -55,6 +64,7 @@ namespace ChickenOmelette.Core
                 Debug.LogError("GameManager: create a GameConfig asset in a Resources folder (Assets/Resources/GameConfig).", this);
             }
 
+            fader = ScreenFader.Create(transform);
             StartNewGame();
         }
 
@@ -65,6 +75,7 @@ namespace ChickenOmelette.Core
             GameEvents.PowerLevelChanged += OnPowerLevelChanged;
             GameEvents.MissileCountChanged += OnMissileCountChanged;
             GameEvents.LevelCompleted += OnLevelCompleted;
+            GameEvents.PlayerDied += OnPlayerDied;
         }
 
         private void OnDisable()
@@ -74,6 +85,7 @@ namespace ChickenOmelette.Core
             GameEvents.PowerLevelChanged -= OnPowerLevelChanged;
             GameEvents.MissileCountChanged -= OnMissileCountChanged;
             GameEvents.LevelCompleted -= OnLevelCompleted;
+            GameEvents.PlayerDied -= OnPlayerDied;
         }
 
         public void StartNewGame()
@@ -81,6 +93,39 @@ namespace ChickenOmelette.Core
             live = new RunState();
             checkpoint = new RunState();
             currentLevel = config != null ? config.FirstLevel : null;
+        }
+
+        public void StartGame()
+        {
+            if (transitioning)
+            {
+                return;
+            }
+
+            StartNewGame();
+
+            if (currentLevel == null)
+            {
+                Debug.LogError("GameManager: the GameConfig has no First Level.", this);
+                return;
+            }
+
+            LoadScene(currentLevel.SceneName);
+        }
+
+        public void LoadMainMenu()
+        {
+            LoadScene(MainMenuScene);
+        }
+
+        public void LoadScene(string sceneName)
+        {
+            if (transitioning)
+            {
+                return;
+            }
+
+            StartCoroutine(TransitionRoutine(sceneName));
         }
 
         public void RegisterLevel(LevelDataSO level)
@@ -105,6 +150,12 @@ namespace ChickenOmelette.Core
             return true;
         }
 
+        private void Snapshot()
+        {
+            checkpoint = live.Clone();
+            checkpoint.hasCarry = true;
+        }
+
         private void OnScoreChanged(int score)
         {
             live.score = score;
@@ -127,15 +178,89 @@ namespace ChickenOmelette.Core
 
         private void OnLevelCompleted(int levelNumber)
         {
-            checkpoint = live.Clone();
-            checkpoint.hasCarry = true;
+            Snapshot();
+
+            if (!flowBusy)
+            {
+                StartCoroutine(LevelEndRoutine());
+            }
+        }
+
+        private void OnPlayerDied()
+        {
+            if (!flowBusy)
+            {
+                StartCoroutine(GameOverRoutine());
+            }
+        }
+
+        private IEnumerator LevelEndRoutine()
+        {
+            flowBusy = true;
+            yield return new WaitForSeconds(LevelEndDelay);
+
+            if (AdvanceToNextLevel())
+            {
+                LoadScene(currentLevel.SceneName);
+            }
+            else
+            {
+                Debug.Log("Game complete: every level cleared. Returning to the main menu.");
+                LoadMainMenu();
+            }
+        }
+
+        private IEnumerator GameOverRoutine()
+        {
+            flowBusy = true;
+            yield return new WaitForSeconds(GameOverDelay);
+
+            Debug.Log("Game over. Returning to the main menu.");
+            LoadMainMenu();
+        }
+
+        private IEnumerator TransitionRoutine(string sceneName)
+        {
+            transitioning = true;
+            Time.timeScale = 1f;
+
+            yield return fader.FadeTo(1f, FadeSeconds);
+
+            AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
+            if (load == null)
+            {
+                Debug.LogError($"GameManager: scene '{sceneName}' could not be loaded. Is it in Build Settings?", this);
+            }
+            else
+            {
+                while (!load.isDone)
+                {
+                    yield return null;
+                }
+
+                yield return null;
+            }
+
+            yield return fader.FadeTo(0f, FadeSeconds);
+
+            transitioning = false;
+            flowBusy = false;
         }
 
         [ContextMenu("Debug: Snapshot And Reload Scene")]
         private void DebugSnapshotAndReload()
         {
-            OnLevelCompleted(currentLevel != null ? currentLevel.LevelNumber : 0);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Snapshot();
+            LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        [ContextMenu("Debug: Complete Level Now")]
+        private void DebugCompleteLevel()
+        {
+            if (currentLevel != null)
+            {
+                GameEvents.RaiseLevelCompleted(currentLevel.LevelNumber);
+            }
         }
     }
 }

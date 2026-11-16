@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ChickenOmelette.Core
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Egg : Hazard, IDamageable, IPoolable
+    public class Egg : Hazard, IDamageable, IBombable, IPoolable
     {
         [SerializeField, Min(0f)] private float offscreenMargin = 0.5f;
 
@@ -21,6 +21,11 @@ namespace ChickenOmelette.Core
         }
 
         public void TakeDamage(int amount)
+        {
+            Release();
+        }
+
+        public void OnBombed(float bossDamageFraction)
         {
             Release();
         }

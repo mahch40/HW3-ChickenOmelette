@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d39bd0c20eebd83088c41e68fee61f2, type: 3}
   m_Name: Wave_L1_GridWide
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
-  waveName: L1 Circle
+  waveName: L1 Grid Tight
   waveType: 0
   enemyPrefab: {fileID: 6001228005374400339, guid: a52d29e6d82559f879ca2f738b7acdd5, type: 3}
   count: 12

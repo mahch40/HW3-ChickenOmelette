@@ -19,15 +19,25 @@ MonoBehaviour:
   backgroundColor: {r: 0.02745098, g: 0.078431375, b: 0.15686275, a: 1}
   backgroundPrefab: {fileID: 0}
   music: {fileID: 0}
-  completionMessage: Sector cleared! Heading to the asteroid belt...
+  completionMessage: Level 1 complete! On to the asteroid belt
   rounds:
   - wave: {fileID: 11400000, guid: 2ead70c7a876617cea6ecb2e9d1c9e2b, type: 2}
     countMultiplier: 0.6
     healthMultiplier: 1
     speedMultiplier: 1
     fireRateMultiplier: 1
-  - wave: {fileID: 11400000, guid: 72b9b4b0d12b827d1a5675cfcf1cc93e, type: 2}
+  - wave: {fileID: 11400000, guid: 61015102ffe8202c9aaa4c0af179d27c, type: 2}
     countMultiplier: 0.5
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 72b9b4b0d12b827d1a5675cfcf1cc93e, type: 2}
+    countMultiplier: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 3ed2fa74bcf3cc811959635e78dcbf9c, type: 2}
+    countMultiplier: 1
     healthMultiplier: 1
     speedMultiplier: 1
     fireRateMultiplier: 1

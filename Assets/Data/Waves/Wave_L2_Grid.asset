@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d39bd0c20eebd83088c41e68fee61f2, type: 3}
+  m_Name: Wave_L2_Grid
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
+  waveName: L2 Grid
+  waveType: 0
+  enemyPrefab: {fileID: 6001228005374400339, guid: 4fb193170f127bed18c0f4ccfa013557, type: 3}
+  count: 15
+  enemyHealth: 0
+  moveSpeed: 5.5
+  spawnInterval: 0.25
+  entryWaypoints:
+  - {x: 0.5, y: 1.2}
+  - {x: 0.15, y: 0.9}
+  - {x: 0.85, y: 0.75}
+  formation: 0
+  columns: 5
+  spacing: {x: 1.7, y: 1.4}
+  formationCenter: {x: 0.5, y: 0.72}
+  swayAmplitude: 1.5
+  swaySpeed: 1
+  eggsPerSecond: 1
+  eggFallSpeed: 5.5
+  diveInterval: 10
+  diveSpeed: 8

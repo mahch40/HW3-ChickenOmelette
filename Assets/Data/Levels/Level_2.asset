@@ -16,8 +16,43 @@ MonoBehaviour:
   sceneName: Level2
   nextLevel: {fileID: 11400000, guid: 849c5d8e01119188db533ffb3192d598, type: 2}
   themeName: Asteroid Belt
-  backgroundColor: {r: 0.09019608, g: 0.0627451, b: 0.047058824, a: 1}
+  backgroundColor: {r: 0.050980393, g: 0.078431375, b: 0.14117648, a: 1}
   backgroundPrefab: {fileID: 0}
   music: {fileID: 0}
-  completionMessage: Belt crossed! The galaxy awaits...
-  rounds: []
+  completionMessage: Level 2 complete! The mothership awaits...
+  rounds:
+  - wave: {fileID: 11400000, guid: 0f13fbd14459c2d2794279aae306deed, type: 2}
+    countMultiplier: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 0.7
+  - wave: {fileID: 11400000, guid: 9eae6185adfbf6e81a46110977661e79, type: 2}
+    countMultiplier: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 72b9b4b0d12b827d1a5675cfcf1cc93e, type: 2}
+    countMultiplier: 1.4
+    healthMultiplier: 1
+    speedMultiplier: 1.2
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 08954b9cc1001ed7d9735f5733668a77, type: 2}
+    countMultiplier: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: ab5d032c6bc7962f5869342b3a442485, type: 2}
+    countMultiplier: 1
+    healthMultiplier: 1
+    speedMultiplier: 1
+    fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 0f13fbd14459c2d2794279aae306deed, type: 2}
+    countMultiplier: 1.2
+    healthMultiplier: 1.25
+    speedMultiplier: 1.1
+    fireRateMultiplier: 1.3
+  - wave: {fileID: 11400000, guid: 405a95ccc8449c5b4adf49bfe41551ae, type: 2}
+    countMultiplier: 0
+    healthMultiplier: 0
+    speedMultiplier: 0
+    fireRateMultiplier: 0

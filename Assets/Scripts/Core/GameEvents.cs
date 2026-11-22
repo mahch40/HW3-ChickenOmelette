@@ -22,6 +22,11 @@ namespace ChickenOmelette.Core
         public static event Action<int, int> RoundStarted;      // level number, round number
         public static event Action<int, int> RoundCompleted;    // level number, round number
         public static event Action<int> PointsAwarded;          // points not tied to a chicken kill
+
+        // Boss
+        public static event Action<string, int> BossAppeared;       // name, max health
+        public static event Action<int, int> BossHealthChanged;     // current, max
+        public static event Action BossDefeated;
         public static void RaiseLivesChanged(int current, int max) => LivesChanged?.Invoke(current, max);
         public static void RaisePlayerDamaged() => PlayerDamaged?.Invoke();
         public static void RaisePlayerDied() => PlayerDied?.Invoke();
@@ -36,6 +41,10 @@ namespace ChickenOmelette.Core
         public static void RaiseRoundStarted(int level, int round) => RoundStarted?.Invoke(level, round);
         public static void RaiseRoundCompleted(int level, int round) => RoundCompleted?.Invoke(level, round);
         public static void RaisePointsAwarded(int points) => PointsAwarded?.Invoke(points);
+
+        public static void RaiseBossAppeared(string bossName, int maxHealth) => BossAppeared?.Invoke(bossName, maxHealth);
+        public static void RaiseBossHealthChanged(int current, int max) => BossHealthChanged?.Invoke(current, max);
+        public static void RaiseBossDefeated() => BossDefeated?.Invoke();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ClearAll()
@@ -52,6 +61,9 @@ namespace ChickenOmelette.Core
             RoundStarted = null;
             RoundCompleted = null;
             PointsAwarded = null;
+            BossAppeared = null;
+            BossHealthChanged = null;
+            BossDefeated = null;
         }
     }
 }

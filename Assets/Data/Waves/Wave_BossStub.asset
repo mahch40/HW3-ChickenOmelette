@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.WaveDataSO
   waveName: New Wave
   waveType: 2
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 6001228005374400339, guid: 15128fc4cdee879a98ecefa3ec453fb3, type: 3}
   count: 15
   enemyHealth: 0
   moveSpeed: 4

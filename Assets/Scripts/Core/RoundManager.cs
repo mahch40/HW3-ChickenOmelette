@@ -151,8 +151,16 @@ namespace ChickenOmelette.Core
                     break;
 
                 case WaveType.Boss:
-                    Log("Boss round: placeholder, the boss is not built yet");
-                    yield return new WaitForSeconds(bossPlaceholderSeconds);
+                    GameObject bossPrefab = round.wave.EnemyPrefab;
+                    if (bossPrefab == null || !bossPrefab.TryGetComponent(out BossBase _))
+                    {
+                        Log("Boss round: no boss prefab assigned, using the placeholder timer");
+                        yield return new WaitForSeconds(bossPlaceholderSeconds);
+                        break;
+                    }
+
+                    BossBase boss = Instantiate(bossPrefab).GetComponent<BossBase>();
+                    yield return new WaitUntil(() => boss == null || boss.IsDefeated);
                     break;
             }
         }

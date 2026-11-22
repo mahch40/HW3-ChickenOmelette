@@ -160,7 +160,7 @@ namespace ChickenOmelette.Core
                     }
 
                     BossBase boss = Instantiate(bossPrefab).GetComponent<BossBase>();
-                    yield return new WaitUntil(() => boss == null || boss.IsDefeated);
+                    yield return new WaitUntil(() => boss == null);
                     break;
             }
         }

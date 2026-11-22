@@ -205,7 +205,8 @@ namespace ChickenOmelette.Core
             }
             else
             {
-                Debug.Log("Game complete: every level cleared. Returning to the main menu.");
+                GameEvents.RaiseGameWon();
+                Debug.Log("Game won! Returning to the main menu until the victory screen exists (task 42).");
                 LoadMainMenu();
             }
         }

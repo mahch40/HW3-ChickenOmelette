@@ -18,6 +18,9 @@ namespace ChickenOmelette.Core
         [SerializeField, Range(0.4f, 0.95f)] private float restHeight = 0.78f;
         [SerializeField, Min(0.1f)] private float entranceSeconds = 2.5f;
 
+        [Header("Defeat")]
+        [SerializeField, Min(0f)] private float deathSeconds = 1.8f;
+
         private static readonly float[] DefaultPhaseFractions = { 1f, 0.65f, 0.3f };
 
         private readonly BossStateMachine machine = new BossStateMachine();
@@ -162,7 +165,48 @@ namespace ChickenOmelette.Core
 
         protected virtual void OnDefeated()
         {
+            StartCoroutine(DeathRoutine());
+        }
+
+        private IEnumerator DeathRoutine()
+        {
+            foreach (Collider2D col in GetComponentsInChildren<Collider2D>())
+            {
+                col.enabled = false;
+            }
+
+            BossMinion.DespawnAll();
+            ClearEnemyShots();
+
+            SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+            Vector3 origin = transform.position;
+            Color flash = new Color(1f, 0.32f, 0.32f);
+
+            for (float t = 0f; t < deathSeconds; t += Time.deltaTime)
+            {
+                transform.position = origin + (Vector3)(Random.insideUnitCircle * 0.15f);
+                if (sr != null)
+                {
+                    sr.color = Color.Lerp(Color.white, flash, Mathf.PingPong(t * 10f, 1f));
+                }
+                yield return null;
+            }
+
             Destroy(gameObject);
+        }
+
+        private static void ClearEnemyShots()
+        {
+            Rect screen = ScreenBounds.Rect;
+            Collider2D[] hits = Physics2D.OverlapBoxAll(screen.center, screen.size * 1.3f, 0f);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                Egg egg = hits[i].GetComponentInParent<Egg>();
+                if (egg != null)
+                {
+                    egg.OnBombed(0f);
+                }
+            }
         }
     }
 }

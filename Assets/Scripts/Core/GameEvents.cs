@@ -27,6 +27,7 @@ namespace ChickenOmelette.Core
         public static event Action<string, int> BossAppeared;       // name, max health
         public static event Action<int, int> BossHealthChanged;     // current, max
         public static event Action BossDefeated;
+        public static event Action GameWon;                         // the last boss of the last level is dead
         public static void RaiseLivesChanged(int current, int max) => LivesChanged?.Invoke(current, max);
         public static void RaisePlayerDamaged() => PlayerDamaged?.Invoke();
         public static void RaisePlayerDied() => PlayerDied?.Invoke();
@@ -45,6 +46,7 @@ namespace ChickenOmelette.Core
         public static void RaiseBossAppeared(string bossName, int maxHealth) => BossAppeared?.Invoke(bossName, maxHealth);
         public static void RaiseBossHealthChanged(int current, int max) => BossHealthChanged?.Invoke(current, max);
         public static void RaiseBossDefeated() => BossDefeated?.Invoke();
+        public static void RaiseGameWon() => GameWon?.Invoke();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ClearAll()
@@ -64,6 +66,7 @@ namespace ChickenOmelette.Core
             BossAppeared = null;
             BossHealthChanged = null;
             BossDefeated = null;
+            GameWon = null;
         }
     }
 }

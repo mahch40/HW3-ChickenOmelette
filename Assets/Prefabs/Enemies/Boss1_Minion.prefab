@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 1966451328696712229}
   - component: {fileID: 376781535466263000}
   - component: {fileID: 2417451246837218777}
-  - component: {fileID: 6251156162463340601}
-  - component: {fileID: 1526146907919634799}
+  - component: {fileID: 1646018834400789022}
+  - component: {fileID: 6791511958533513906}
+  - component: {fileID: -6056280984348343595}
   m_Layer: 0
-  m_Name: Boss_Dummy
+  m_Name: Boss1_Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 0.68, y: 0.68, z: 0.68}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -159,7 +160,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.6
---- !u!114 &6251156162463340601
+--- !u!114 &1646018834400789022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,11 +169,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 6001228005374400339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed0a300d96dfa5a4b09b7b8599f7f23, type: 3}
+  m_Script: {fileID: 11500000, guid: f8945384c6dd36418b46d81bdc247b85, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.Hazard
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.Chicken
+  maxHealth: 1
+  scoreValue: 10
+--- !u!114 &6791511958533513906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001228005374400339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b8b6c9e7bb489538bf8acac6cf2b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.ChickenContact
   damage: 1
---- !u!114 &1526146907919634799
+--- !u!114 &-6056280984348343595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,12 +196,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6001228005374400339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e56c5a1928e584ccb9c9e546eb7e390a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c32b76bb24c88b8eb2925c6ea3b1ac6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.DebugBoss
-  data: {fileID: 11400000, guid: fcb08f22eb1ac7d23ac22835309bee3d, type: 2}
-  fallbackName: BOSS
-  fallbackHealth: 60
-  fallbackScore: 1000
-  restHeight: 0.78
-  entranceSeconds: 2.5
+  m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Core.BossMinion
+  swayAmplitude: 1.5
+  swayFrequency: 2
+  bottomMargin: 1.5

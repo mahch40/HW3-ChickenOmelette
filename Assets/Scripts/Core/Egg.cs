@@ -20,6 +20,12 @@ namespace ChickenOmelette.Core
             body.linearVelocity = Vector2.down * speed;
         }
 
+
+        public void Launch(Vector2 direction, float speed)
+        {
+            body.linearVelocity = direction.normalized * speed;
+        }
+
         public void TakeDamage(int amount)
         {
             Release();

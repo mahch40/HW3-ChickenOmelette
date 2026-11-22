@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78b304510ff991603b2ee6211b8041f8, type: 3}
-  m_Name: Boss_Dummy
+  m_Name: Boss_GiantChicken
   m_EditorClassIdentifier: Assembly-CSharp::ChickenOmelette.Data.BossDataSO
   bossName: DUMMY BOSS
-  maxHealth: 60
+  maxHealth: 100
   scoreValue: 1000
+  phaseStartFractions:
+  - 1
+  - 0.65
+  - 0.3

@@ -18,6 +18,17 @@ namespace ChickenOmelette.Core
         [SerializeField, Range(0.4f, 0.95f)] private float restHeight = 0.78f;
         [SerializeField, Min(0.1f)] private float entranceSeconds = 2.5f;
 
+        private static readonly float[] DefaultPhaseFractions = { 1f, 0.65f, 0.3f };
+
+        private readonly BossStateMachine machine = new BossStateMachine();
+        private float[] phaseFractions;
+        private BossState[] phaseStates;
+
+        public int PhaseIndex { get; private set; } = -1;
+        public int PhaseCount => phaseFractions.Length;
+        public bool IsEnraged => PhaseIndex >= 0 && PhaseIndex == PhaseCount - 1;
+        public BossState CurrentState => machine.Current;
+
         public string BossName { get; private set; }
         public int MaxHealth { get; private set; }
         public int Health { get; private set; }
@@ -32,6 +43,9 @@ namespace ChickenOmelette.Core
             MaxHealth = data != null ? data.MaxHealth : fallbackHealth;
             ScoreValue = data != null ? data.ScoreValue : fallbackScore;
             Health = MaxHealth;
+            phaseFractions = data != null && data.PhaseStartFractions != null && data.PhaseStartFractions.Length > 0
+                ? data.PhaseStartFractions
+                : DefaultPhaseFractions;
 
             Rect screen = ScreenBounds.Rect;
             transform.position = new Vector3(screen.center.x, screen.yMax + 3f, 0f);
@@ -84,17 +98,66 @@ namespace ChickenOmelette.Core
             GameEvents.RaiseBossHealthChanged(Health, MaxHealth);
             OnDamaged(amount);
 
+            if (Health > 0)
+            {
+                UpdatePhase();
+            }
+
             if (Health <= 0)
             {
                 IsDefeated = true;
                 IsVulnerable = false;
+                machine.Stop();
                 GameEvents.RaiseEnemyKilled(transform.position, ScoreValue);
                 GameEvents.RaiseBossDefeated();
                 OnDefeated();
             }
         }
 
-        protected virtual void OnEntranceFinished() { }
+        protected virtual void OnEntranceFinished()
+        {
+            phaseStates = CreatePhaseStates();
+            UpdatePhase();
+        }
+
+        protected virtual BossState[] CreatePhaseStates()
+        {
+            return null;
+        }
+
+        private void Update()
+        {
+            if (!IsDefeated)
+            {
+                machine.Tick(Time.deltaTime);
+            }
+        }
+
+        private void UpdatePhase()
+        {
+            if (phaseStates == null || phaseStates.Length == 0)
+            {
+                return;
+            }
+
+            int phase = 0;
+            for (int i = 0; i < phaseFractions.Length; i++)
+            {
+                if (HealthFraction <= phaseFractions[i])
+                {
+                    phase = i;
+                }
+            }
+
+            if (phase == PhaseIndex)
+            {
+                return;
+            }
+
+            PhaseIndex = phase;
+            machine.ChangeState(phaseStates[Mathf.Min(phase, phaseStates.Length - 1)]);
+        }
+
         protected virtual void OnDamaged(int amount) { }
 
         protected virtual void OnDefeated()

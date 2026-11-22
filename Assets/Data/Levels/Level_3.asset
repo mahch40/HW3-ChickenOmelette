@@ -36,6 +36,11 @@ MonoBehaviour:
     healthMultiplier: 1.33
     speedMultiplier: 1.4
     fireRateMultiplier: 1
+  - wave: {fileID: 11400000, guid: 4c7ad67c68648877e9b30e5cd30816fb, type: 2}
+    countMultiplier: 0
+    healthMultiplier: 0
+    speedMultiplier: 0
+    fireRateMultiplier: 0
   - wave: {fileID: 11400000, guid: f78de752a8adb0a12bf4a559983a3a43, type: 2}
     countMultiplier: 1
     healthMultiplier: 1
@@ -66,8 +71,3 @@ MonoBehaviour:
     healthMultiplier: 1.3
     speedMultiplier: 1.15
     fireRateMultiplier: 1.5
-  - wave: {fileID: 11400000, guid: 405a95ccc8449c5b4adf49bfe41551ae, type: 2}
-    countMultiplier: 0
-    healthMultiplier: 0
-    speedMultiplier: 0
-    fireRateMultiplier: 0

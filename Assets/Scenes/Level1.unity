@@ -900,6 +900,10 @@ MonoBehaviour:
   giftBoxPrefab: {fileID: 4041765043630752922, guid: f713316f94fa451daa473e389d513598, type: 3}
   giftChance: 0.08
   prewarmCount: 5
+  foodPrefabs:
+  - {fileID: 4041765043630752922, guid: 6f6731f49dd8fea36b9515c8335dd76a, type: 3}
+  - {fileID: 4041765043630752922, guid: a630c405c76cc715f8a3fd7930d83564, type: 3}
+  foodChance: 0.35
 --- !u!4 &1572891876
 Transform:
   m_ObjectHideFlags: 0
